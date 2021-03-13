@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Lovely Home";
+  src: url("./fonts/Lovely\ Home.ttf");
+}
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  --tree-green: #445721;
+}
+
+body {
+  background-image: url("./tree-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 120px #303f15;
+}
+
+.main-container {
+  font-family: "Lovely Home";
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+}
+
+.main-container h1 {
+  font-weight: 400;
+  font-size: 5em;
+  color: white;
+  text-shadow: 3px 3px var(--tree-green), -1px -1px rgba(12, 105, 12, 0.1),
+    3px 3px 20px rgba(194, 220, 255, 0.7);
+  display: flex;
+  text-align: center;
+}
+
+@media screen and (min-width: 900px) {
+  .main-container h1 {
+    font-size: 5.5em;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main-container h1 {
+    font-size: 6.5em;
+  }
+}
+
+.main-container p {
+  font-family: "Redressed";
+  font-size: 2em;
+  color: rgb(231, 255, 212);
+  text-shadow: 1px 1px 5px rgb(39, 51, 16);
+}
+
+.main-container .buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.main-container button {
+  border: 0;
+  background-color: white;
+  border-radius: 3px;
+  padding: 8px 22px;
+  font-family: "Redressed";
+  font-size: 23px;
+  color: var(--tree-green);
+  box-shadow: 1px 1px 4px rgba(105, 133, 55, 0.8);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.main-container button:hover {
+  background-color: #e0ffcb;
+  color: #324117;
+  /* transform: translate(1px, 1px); */
+  box-shadow: 1px 1px 6px rgba(105, 133, 55, 0.8);
+}
+
+.main-container .spacer {
+  height: 7rem;
+}
