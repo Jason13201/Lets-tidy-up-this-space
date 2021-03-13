@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "Lovely Home";
+  src: url("./fonts/Lovely\ Home.ttf");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.navbar {
+  display: flex;
+  width: 80%;
+  padding: 25px 10px;
+  text-transform: uppercase;
+  font-family: Montserrat;
+  gap: 15px;
+  font-size: 17px;
+}
+
+.navbar .grower {
+  flex-grow: 1;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+  /* transition: color 0.3s; */
+}
+
+.navbar a:hover {
+  color: #555;
+}
+
+.credits {
+  font-family: Montserrat;
+  text-transform: uppercase;
+  font-size: small;
+  padding: 10px;
+}
+
+.main-container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.main-container h1 {
+  font-family: "Lovely Home";
+  font-weight: 400;
+  /* font-size: 5em; */
+  text-align: center;
+}
+
+.main-container img {
+  width: 400px;
+}
+
+.main-container form {
+  min-width: min(100vw, 275px);
+}

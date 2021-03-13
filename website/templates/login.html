@@ -1,0 +1,15 @@
+{% extends "formlayout.html" %} {% block content %}
+<h1>Sign in!</h1>
+<img src="{{ url_for('static', filename='welcome.png') }}" alt="" />
+<form class="ui form">
+  <div class="field">
+    <label>Household nickname</label>
+    <input type="text" name="first-name" placeholder="Username" />
+  </div>
+  <div class="field">
+    <label>Password</label>
+    <input type="password" name="last-name" placeholder="Password" />
+  </div>
+  <button class="ui button" type="submit">Login</button>
+</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let's tidy up this space!</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='formlayout.css') }}"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="{{ url_for('home') }}">
+        <div class="header">Lets tidy up this space</div>
+      </a>
+      <div class="grower"></div>
+      <a href="{{ url_for('login') }}">
+        <div class="login">Login</div>
+      </a>
+      <a href="{{ url_for('register') }}">
+        <div class="register">Sign Up</div>
+      </a>
+    </div>
+    <div class="main-container">{% block content %} {% endblock %}</div>
+    <div class="credits">&copy;2021 Team Cheesy</div>
+  </body>
+</html>
