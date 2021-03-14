@@ -32,7 +32,7 @@ def login():
 
         if userFoundRow:
             if bcrypt.check_password_hash(userFoundRow.password, form.password.data):
-                login_user(User(userFoundRow.id), remember=form.remember.data)
+                login_user(User(userFoundRow), remember=form.remember.data)
                 return redirect(url_for("home"))
             flash("Incorrect password specified.")
         else:
@@ -69,4 +69,18 @@ def register():
 @app.route("/logout")
 def logout():
     logout_user()
+    return redirect(url_for("home"))
+
+
+@app.route("/addTask", methods=["POST"])
+@login_required
+def addTaskRoute():
+    current_user.addTask(request.form["task-name"], int(request.form["assignee"]))
+    return redirect(url_for("home"))
+
+
+@app.route("/addMember", methods=["POST"])
+@login_required
+def addMemberRoute():
+    current_user.addMember(request.form["member-name"], request.form["discord"])
     return redirect(url_for("home"))

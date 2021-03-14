@@ -34,3 +34,12 @@ def addUser(username, password):
         (nextUserId, username, password, "{}"),
     )
     needToRecompute = True
+
+
+def updateMisc(user_id, misc):
+    global needToRecompute
+    session.execute(
+        "UPDATE keyspace1.data SET misc = %s WHERE id = %s",
+        (misc, user_id),
+    )
+    needToRecompute = True
