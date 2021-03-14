@@ -1,13 +1,10 @@
 import json
 from flask import render_template, url_for, request, redirect, flash
 from flask_login import login_user, current_user, logout_user, login_required
-from website import app, session, bcrypt
+from website import app, bcrypt
 from website.forms import RegistrationForm, LoginForm
 from website.models import User
-
-
-users = session.execute("SELECT id FROM keyspace1.data;")
-nextUserId = 1 + max([row.id for row in users]) if users else 1
+from website.dbCache import getDBData, addUser
 
 
 @app.route("/")
@@ -21,11 +18,13 @@ def login():
         return redirect(url_for("home"))
     form = LoginForm()
     if form.validate_on_submit():
-        users = session.execute("SELECT id, username, password FROM keyspace1.data;")
+        users = getDBData()
+        print(users)
         userFoundRow = None
         if users:
             for row in users:
-                if row.username.lower() == form.username.data:
+                print(row.username)
+                if row.username.lower() == form.username.data.lower():
                     userFoundRow = row
                     break
 
@@ -45,11 +44,11 @@ def register():
         return redirect(url_for("home"))
     form = RegistrationForm()
     if form.validate_on_submit():
-        users = session.execute("SELECT id, username, password FROM keyspace1.data;")
+        users = getDBData()
         userFoundRow = None
         if users:
             for row in users:
-                if row.username.lower() == form.username.data:
+                if row.username.lower() == form.username.data.lower():
                     userFoundRow = row
                     break
 
@@ -57,13 +56,8 @@ def register():
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode(
                 "utf-8"
             )
-            session.execute(
-                """
-            INSERT INTO keyspace1.data (id, username, password, misc)
-            VALUES (%s, %s, %s, %s)
-            """,
-                (nextUserId, form.username.data, hashed_password, "{}"),
-            )
+
+            addUser(form.username.data, hashed_password)
             flash("User successfully created!")
             return redirect(url_for("login"))
         flash("The specified household nickname already exists")

@@ -1,10 +1,11 @@
-from website import login_manager, session
+from website import login_manager
+from website.dbCache import getDBData
 from flask_login import UserMixin
 
 
 @login_manager.user_loader
 def load_user(user_id):
-    users = session.execute("SELECT id, username, password FROM keyspace1.data;")
+    users = getDBData()
     if users:
         for row in users:
             if str(row.id) == user_id:
