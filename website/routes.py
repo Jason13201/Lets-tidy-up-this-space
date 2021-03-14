@@ -9,6 +9,8 @@ from website.dbCache import getDBData, addUser
 
 @app.route("/")
 def home():
+    if current_user.is_authenticated:
+        return render_template("dash.html")
     return render_template("home.html")
 
 
@@ -62,3 +64,9 @@ def register():
             return redirect(url_for("login"))
         flash("The specified household nickname already exists")
     return render_template("register.html", form=form)
+
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))

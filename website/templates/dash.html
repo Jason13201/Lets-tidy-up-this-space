@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let's tidy up this space! - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='dash.css') }}"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="header">Let's tidy up this space</div>
+      <div class="grower"></div>
+      <a href="{{ url_for('logout') }}">
+        <div class="logout">Logout</div>
+      </a>
+    </div>
+    <div class="main-container">
+      <h1 class="m-header">Task OPS</h1>
+      <div class="taskform-wrap">
+        <form class="ui form">
+          <h3>Add a task!</h3>
+          <div class="field">
+            <label>Task name</label>
+            <input
+              type="text"
+              name="first-name"
+              placeholder="What needs to be done?"
+            />
+          </div>
+          <div class="field">
+            <label>Assign task to</label>
+            <select name="gender" class="ui dropdown" id="person-select">
+              <option value="you">Yourself</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <button class="ui button" type="submit">Add task</button>
+        </form>
+        <form class="ui form">
+          <h3>Add a household member!</h3>
+          <div class="field">
+            <label>Member name</label>
+            <input
+              type="text"
+              name="first-name"
+              placeholder="Who are you adding?"
+            />
+          </div>
+          <div class="field">
+            <label>Discord identifier</label>
+            <input type="text" name="first-name" placeholder="User#0001" />
+          </div>
+          <button class="ui button" type="submit">Add member</button>
+        </form>
+      </div>
+      <h1 class="m-header">Task List</h1>
+      <div class="task-flex">
+        <div class="task-wrap">
+          <h3>Assigned to you</h3>
+          <ul>
+            <li>Rearrange the pantry</li>
+            <li>Organize the shelves in the josh's bedroom</li>
+            <li>Vacuum the carpets</li>
+          </ul>
+        </div>
+        <div class="task-wrap">
+          <h3>Assigned to me</h3>
+          <ul>
+            <li>Repair the cycles</li>
+            <li>Task 5</li>
+            <li>Task 6</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="credits">&copy;2021 Team Cheesy</div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.7/dist/semantic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.12/lib/draggable.bundle.js"></script>
+    <script src="{{ url_for('static', filename='dash.js') }}"></script>
+  </body>
+</html>
