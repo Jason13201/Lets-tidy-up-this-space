@@ -1,19 +1,23 @@
 {% extends "formlayout.html" %} {% block content %}
 <h1>Register</h1>
 <img src="{{ url_for('static', filename='working.png') }}" alt="" />
-<form class="ui form">
-  <div class="field">
-    <label>Household nickname</label>
-    <input type="text" name="username" placeholder="Username" />
+<form class="ui form" method="POST" action="">
+  {% with messages = get_flashed_messages(with_categories=True) %} {% if
+  messages %}
+  <div class="ui message">
+    <div class="header">Hey there!</div>
+    <ul class="list">
+      {% for category, message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
   </div>
+  {% endif %} {% endwith %} {{ form.hidden_tag() }}
+  <div class="field">{{ form.username.label() }} {{ form.username() }}</div>
+  <div class="field">{{ form.password.label() }} {{ form.password() }}</div>
   <div class="field">
-    <label>Password</label>
-    <input type="password" name="password" placeholder="Password" />
+    {{ form.confirm_password.label() }} {{ form.confirm_password() }}
   </div>
-  <div class="field">
-    <label>Confirm password</label>
-    <input type="password" name="confirmation" placeholder="Confirm password" />
-  </div>
-  <button class="ui button" type="submit">Create account</button>
+  {{ form.submit(class="ui button") }}
 </form>
 {% endblock %}
