@@ -32,10 +32,10 @@ class User(UserMixin):
         self.misc["tasks"].append(stmt)
         self.misc["assignedTo"].append(to)
         updateMisc(self.id, json.dumps(self.misc))
+        if to > 0:
+            from website import discordQ
 
-        from website import discordQ
-
-        discordQ.put((self.misc["discord"][to - 1], stmt))
+            discordQ.put((self.misc["discord"][to - 1], stmt))
 
     def addMember(self, name, discord):
         self.misc["members"].append(name)
