@@ -18,3 +18,9 @@ cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
 session = cluster.connect()
 
 from website import routes
+
+
+def startDebugServer(sharedQ):
+    global discordQ
+    discordQ = sharedQ
+    app.run(debug=True)

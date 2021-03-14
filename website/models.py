@@ -33,6 +33,10 @@ class User(UserMixin):
         self.misc["assignedTo"].append(to)
         updateMisc(self.id, json.dumps(self.misc))
 
+        from website import discordQ
+
+        discordQ.put((self.misc["discord"][to - 1], stmt))
+
     def addMember(self, name, discord):
         self.misc["members"].append(name)
         self.misc["discord"].append(discord)
